@@ -1,0 +1,12 @@
+# Build output
+target/
+
+# IDE
+.idea/
+
+# Local H2 database
+data/
+
+# Logs and local env
+*.log
+.env

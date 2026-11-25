@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    org.firememory: DEBUG
+
+#spring:
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/local_db
+#    username: postgres
+#    password: local_password
+
+
+google:
+  cloud:
+    credentials-path: ${GOOGLE_APPLICATION_CREDENTIALS}
+    project-id: ${PROJECT_ID}
+    speech:
+      location: "global"
+      model: "telephony"   # tuned for narrowband (8 kHz) audio like radio; "long" is the general alternative
+      language: "en-US"
+      stream-soft-limit: 240s   # after this, restart the Google stream at the next pause
+      stream-hard-limit: 270s   # restart regardless (Google closes streams at ~5 min)
+
+fireground:
+  sse:
+    heartbeat-interval: 15s     # ":keepalive" comment; detects dropped clients during radio silence
